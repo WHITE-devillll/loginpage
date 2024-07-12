@@ -1,0 +1,52 @@
+document.addEventListener('DOMContentLoaded', function() {
+
+    const menuBtn = document.querySelector('.menu-btn');
+    const navMenu = document.querySelector('nav ul');
+
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+    });
+
+    const searchBtn = document.querySelector('.search-field button');
+    const searchInput = document.querySelector('.search-field input');
+
+    searchBtn.addEventListener('click', () => {
+        const searchTerm = searchInput.value.trim();
+        if (searchTerm !== '') {
+            alert(`Perform search for: ${searchTerm}`); // Replace with actual search logic
+        } else {
+            alert('Please enter a search term');
+        }
+    });
+
+    const chatBtn = document.querySelector('.hero-section-right-btns button');
+
+    chatBtn.addEventListener('mouseenter', () => {
+        chatBtn.style.backgroundColor = 'white';
+        chatBtn.style.color = 'black';
+    });
+
+    chatBtn.addEventListener('mouseleave', () => {
+        chatBtn.style.backgroundColor = 'rgb(18, 155, 155)';
+        chatBtn.style.color = 'white';
+    });
+
+    const scrollLinks = document.querySelectorAll('a[href^="#"]');
+    
+    scrollLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                const offsetTop = targetElement.offsetTop;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
